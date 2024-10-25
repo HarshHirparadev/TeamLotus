@@ -7,61 +7,25 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient'; // Install LinearGradient: https://github.com/react-native-linear-gradient/react-native-linear-gradient
-
+import { Header } from './header';
+import { Footer } from './footer';
 export default (props) => {
   return (
     <SafeAreaView style={styles.container}>
+      <Header />
       <ScrollView style={styles.scrollView}>
-        <LinearGradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 1 }}
-          colors={['#CA6955', '#CF7067', '#D26187']}
-          style={styles.row}
-        >
-          <Image
-            source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-            resizeMode={'stretch'}
-            style={styles.image}
-          />
-          <Text style={styles.text}>{'Lotus Learning'}</Text>
-          <View style={styles.box}></View>
-          <View style={styles.column}>
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image2}
-            />
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image3}
-            />
-          </View>
-          <View style={styles.column2}>
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image4}
-            />
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image4}
-            />
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image5}
-            />
-          </View>
-        </LinearGradient>
         <View style={styles.row2}>
           <View style={styles.column3}>
             <Text style={styles.text2}>{'John Doe'}</Text>
             <Text style={styles.text3}>{'Toronto, Ontario, Canada'}</Text>
           </View>
-          <View style={styles.box2}></View>
+
+          <Image
+            source={require('../../assets/images/Mridul.png')}
+            resizeMode={'cover'}
+            style={styles.profileImage}
+          />
+
           <View style={styles.column4}>
             <Image
               source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
@@ -116,53 +80,7 @@ export default (props) => {
           </View>
         </View>
       </ScrollView>
-      <LinearGradient
-        colors={['#EB7B38', '#E26662', '#E15890']}
-        style={styles.footerGradient}
-      >
-        <View style={styles.footerContainer}>
-          <View style={styles.iconsContainer}>
-            <Image
-              style={styles.icon}
-              source={require('../../assets/images/MainLogo.png')}
-            />
-            <Image
-              style={styles.icon}
-              source={require('../../assets/images/MainLogo.png')}
-            />
-            <Image
-              style={styles.icon}
-              source={require('../../assets/images/MainLogo.png')}
-            />
-            <Image
-              style={styles.icon}
-              source={require('../../assets/images/MainLogo.png')}
-            />
-            <Image
-              style={styles.icon}
-              source={require('../../assets/images/MainLogo.png')}
-            />
-          </View>
-
-          <View style={styles.textContainer}>
-            <Text style={styles.footerText} numberOfLines={1}>
-              Open Courses
-            </Text>
-            <Text style={styles.footerText} numberOfLines={1}>
-              Courses
-            </Text>
-            <Text style={styles.footerText} numberOfLines={1}>
-              Profile
-            </Text>
-            <Text style={styles.footerText} numberOfLines={1}>
-              Games
-            </Text>
-            <Text style={styles.footerText} numberOfLines={1}>
-              Search
-            </Text>
-          </View>
-        </View>
-      </LinearGradient>
+      <Footer />
     </SafeAreaView>
   );
 };
@@ -174,13 +92,6 @@ const styles = StyleSheet.create({
   box: {
     flex: 1,
     alignSelf: 'stretch',
-  },
-  box2: {
-    width: 99,
-    height: 99,
-    borderColor: '#5E27FD',
-    borderWidth: 1,
-    marginRight: 30,
   },
   box3: {
     height: 122,
@@ -205,9 +116,6 @@ const styles = StyleSheet.create({
   column: {
     width: 16,
     marginRight: 24,
-  },
-  column2: {
-    width: 16,
   },
   column3: {
     width: 93,
@@ -246,66 +154,22 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingBottom: 14,
   },
-  column10: {
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 10,
+    width: 99,
+    height: 99,
     borderColor: '#5E27FD',
     borderWidth: 1,
-    paddingVertical: 14,
-    paddingLeft: 32,
+    marginRight: 30,
   },
-  image: {
-    width: 39,
-    height: 27,
-    marginRight: 11,
-  },
-  image2: {
-    height: 13,
-    marginBottom: 1,
-  },
-  image3: {
-    height: 4,
-    marginHorizontal: 5,
-  },
-  image4: {
-    height: 1,
-    marginBottom: 5,
-  },
-  image5: {
-    height: 1,
-  },
+
   image6: {
     height: 40,
     marginBottom: 4,
     marginHorizontal: 8,
-  },
-  image7: {
-    width: 16,
-    height: 15,
-  },
-  image8: {
-    width: 23,
-    height: 18,
-    marginRight: 54,
-  },
-  image9: {
-    width: 13,
-    height: 17,
-    marginRight: 56,
-  },
-  image10: {
-    height: 19,
-    marginHorizontal: 6,
-  },
-  image11: {
-    width: 9,
-    height: 16,
-  },
-  image12: {
-    width: 8,
-    height: 16,
-  },
-  image13: {
-    width: 18,
-    height: 17,
   },
   row: {
     flexDirection: 'row',
@@ -334,17 +198,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 16,
     marginHorizontal: 16,
-  },
-  row5: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 4,
-    marginRight: 38,
-  },
-  row6: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 28,
   },
   scrollView: {
     flex: 1,
@@ -401,25 +254,6 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginLeft: 42,
   },
-  text12: {
-    color: '#FFFFFF',
-    fontSize: 10,
-    marginRight: 27,
-  },
-  text13: {
-    color: '#FFFFFF',
-    fontSize: 10,
-    marginRight: 19,
-  },
-  text14: {
-    color: '#FFFFFF',
-    fontSize: 10,
-  },
-  text15: {
-    color: '#FFFFFF',
-    fontSize: 10,
-    marginRight: 38,
-  },
   view: {
     width: 77,
     alignItems: 'center',
@@ -434,40 +268,5 @@ const styles = StyleSheet.create({
     backgroundColor: '#34CC99',
     borderRadius: 8,
     paddingVertical: 11,
-  },
-  view3: {
-    width: 23,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 52,
-  },
-  footerGradient: {
-    width: '100%',
-    height: 50,
-  },
-  footerContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  iconsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '90%',
-    marginBottom: 5,
-  },
-  icon: {
-    width: 30,
-    height: 30,
-    resizeMode: 'contain',
-  },
-  textContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '90%',
-  },
-  footerText: {
-    color: '#ffffff',
-    fontSize: 12,
-    textAlign: 'center',
   },
 });
