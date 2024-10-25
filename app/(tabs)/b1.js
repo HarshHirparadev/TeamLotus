@@ -7,55 +7,13 @@ import {
   Text,
   StyleSheet,
 } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient'; // Install LinearGradient: https://github.com/react-native-linear-gradient/react-native-linear-gradient
-
+import { Header } from './header';
+import { Footer } from './footer';
 export default (props) => {
   return (
     <SafeAreaView style={styles.container}>
+      <Header />
       <ScrollView style={styles.scrollView}>
-        <LinearGradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 1 }}
-          colors={['#CA6955', '#CF7067', '#D26187']}
-          style={styles.row}
-        >
-          <Image
-            source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-            resizeMode={'stretch'}
-            style={styles.image}
-          />
-          <Text style={styles.text}>{'Lotus Learning'}</Text>
-          <View style={styles.box}></View>
-          <View style={styles.column}>
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image2}
-            />
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image3}
-            />
-          </View>
-          <View style={styles.column2}>
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image4}
-            />
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image4}
-            />
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image5}
-            />
-          </View>
-        </LinearGradient>
         <View style={styles.row2}>
           <View style={styles.column3}>
             <Text style={styles.text2}>{'John Doe'}</Text>
@@ -116,53 +74,7 @@ export default (props) => {
           </View>
         </View>
       </ScrollView>
-      <LinearGradient
-        colors={['#EB7B38', '#E26662', '#E15890']}
-        style={styles.footerGradient}
-      >
-        <View style={styles.footerContainer}>
-          <View style={styles.iconsContainer}>
-            <Image
-              style={styles.icon}
-              source={require('../../assets/images/MainLogo.png')}
-            />
-            <Image
-              style={styles.icon}
-              source={require('../../assets/images/MainLogo.png')}
-            />
-            <Image
-              style={styles.icon}
-              source={require('../../assets/images/MainLogo.png')}
-            />
-            <Image
-              style={styles.icon}
-              source={require('../../assets/images/MainLogo.png')}
-            />
-            <Image
-              style={styles.icon}
-              source={require('../../assets/images/MainLogo.png')}
-            />
-          </View>
-
-          <View style={styles.textContainer}>
-            <Text style={styles.footerText} numberOfLines={1}>
-              Open Courses
-            </Text>
-            <Text style={styles.footerText} numberOfLines={1}>
-              Courses
-            </Text>
-            <Text style={styles.footerText} numberOfLines={1}>
-              Profile
-            </Text>
-            <Text style={styles.footerText} numberOfLines={1}>
-              Games
-            </Text>
-            <Text style={styles.footerText} numberOfLines={1}>
-              Search
-            </Text>
-          </View>
-        </View>
-      </LinearGradient>
+      <Footer />
     </SafeAreaView>
   );
 };
@@ -205,9 +117,6 @@ const styles = StyleSheet.create({
   column: {
     width: 16,
     marginRight: 24,
-  },
-  column2: {
-    width: 16,
   },
   column3: {
     width: 93,

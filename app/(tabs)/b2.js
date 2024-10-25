@@ -9,54 +9,14 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient'; // Install LinearGradient: https://github.com/react-native-linear-gradient/react-native-linear-gradient
+import { Header } from './header';
+import { Footer } from './footer';
 export default (props) => {
   const [activeTab, setActiveTab] = useState('inProgress');
   return (
     <SafeAreaView style={styles.container}>
+      <Header />
       <ScrollView style={styles.scrollView}>
-        <LinearGradient
-          start={{ x: 0, y: 0 }}
-          end={{ x: 0, y: 1 }}
-          colors={['#CA6955', '#CF7067', '#D26187']}
-          style={styles.row}
-        >
-          <Image
-            source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-            resizeMode={'stretch'}
-            style={styles.image}
-          />
-          <Text style={styles.text}>{'Lotus Learning'}</Text>
-          <View style={styles.box}></View>
-          <View style={styles.column}>
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image2}
-            />
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image3}
-            />
-          </View>
-          <View style={styles.column2}>
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image4}
-            />
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image4}
-            />
-            <Image
-              source={{ uri: 'https://i.imgur.com/1tMFzp8.png' }}
-              resizeMode={'stretch'}
-              style={styles.image5}
-            />
-          </View>
-        </LinearGradient>
         <Text style={styles.text2}>{'Courses'}</Text>
         <View style={styles.row2}>
           <TouchableOpacity onPress={() => setActiveTab('inProgress')}>
@@ -198,6 +158,7 @@ export default (props) => {
           </View>
         )}
       </ScrollView>
+      <Footer />
     </SafeAreaView>
   );
 };
