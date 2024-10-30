@@ -11,50 +11,17 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { Header } from './header';
+import { Footer } from './footer';
 // import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 // import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
 
 const Home = () => {
   return (
     <SafeAreaView style={styles.container}>
+         <Header />
       <ScrollView contentContainerStyle={styles.scrollView}>
-        {/* Top Navigation */}
-
-        <View style={styles.navbar}>
-          <View style={styles.navbarContainer}>
-            <Image
-              source={require("../../assets/images/Mainwhitelogo.png")}
-              style={styles.logo}
-              resizeMode="contain"
-            />
-            
-            <Text style={styles.navTitle}>Lotus Learning</Text>
-          </View>
-
-          <TouchableOpacity style={styles.menuButton}>
-            {/* <Svg xmlns="http://www.w3.org/2000/svg" width="26" height="25" viewBox="0 0 26 25" fill="none">
-  <path d="M0.214355 2.94118C0.214355 1.31681 1.53117 0 3.15553 0H22.1456C23.77 0 25.0868 1.31681 25.0868 2.94118C25.0868 4.56554 23.77 5.88235 22.1456 5.88235H3.15553C1.53117 5.88235 0.214355 4.56554 0.214355 2.94118Z" fill="white"/>
-  <path d="M0.214355 12.5C0.214355 10.8756 1.53117 9.55884 3.15553 9.55884H22.1456C23.77 9.55884 25.0868 10.8756 25.0868 12.5C25.0868 14.1244 23.77 15.4412 22.1456 15.4412H3.15553C1.53117 15.4412 0.214355 14.1244 0.214355 12.5Z" fill="white"/>
-  <path d="M0.214355 22.0588C0.214355 20.4345 1.53117 19.1176 3.15553 19.1176H22.1456C23.77 19.1176 25.0868 20.4345 25.0868 22.0588C25.0868 23.6832 23.77 25 22.1456 25H3.15553C1.53117 25 0.214355 23.6832 0.214355 22.0588Z" fill="white"/>
-</Svg>   */}
-
-
-
-<Image
-              source={require("../../assets/images/Hamburger.png")}
-              style={styles.hamburger}
-              resizeMode="contain"
-            />
-          </TouchableOpacity>
-        </View>
-
-        {/* Search Bar */}
-        <View style={styles.searchContainer}>
-          <TextInput placeholder="Search" style={styles.searchInput} />
-          <TouchableOpacity style={styles.searchButton}>
-            <Text style={styles.searchButtonText}>Search</Text>
-          </TouchableOpacity>
-        </View>
+      
 
         {/* Welcome Message */}
         <Text style={styles.welcomeText}>Welcome Back, XXX!</Text>
@@ -116,6 +83,8 @@ const Home = () => {
           </View>
         </ScrollView>
       </ScrollView>
+
+      <Footer />
     </SafeAreaView>
   );
 };
