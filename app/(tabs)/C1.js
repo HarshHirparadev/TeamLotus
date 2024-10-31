@@ -1,104 +1,316 @@
 import React from 'react';
-import { View, StyleSheet, Image, Text, TouchableOpacity } from 'react-native';
+import {
+  SafeAreaView,
+  View,
+  ScrollView,
+  Image,
+  Text,
+  StyleSheet,  
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
+import { Header } from './header';
+import { Footer } from './footer';
 import { LinearGradient } from 'expo-linear-gradient';
-
-const LotusLearning = () => {
+import { faBold } from '@fortawesome/free-solid-svg-icons';
+import { Ionicons } from '@expo/vector-icons';
+export default (props) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <View style={styles.logoContainer}>
-          <Image
-            resizeMode="contain"
-            source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/7485db2096da7fc2b3692af5f271f2273dcc2abf409fd329460760f80d8e73a8?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d" }}
-            style={styles.logo}
-            accessible={true}
-            accessibilityLabel="Lotus Learning logo"
-          />
-          <View style={styles.titleContainer}>
-            <Text style={styles.title}>Lotus Learning</Text>
+    <SafeAreaView style={styles.container}>
+      <Header />
+      <ScrollView style={styles.scrollView}>
+        
+        <View style={styles.container_shadow}>
+        <LinearGradient
+            colors={['#68D391', '#C6F6D5']} // Adjust these colors based on the gradient you need
+            style={styles.gradient} >
+          <View style={styles.searchcontainer}>
+            <Ionicons name="search" size={25} color="#68D391" style={styles.icon} />
+            <TextInput
+              style={styles.searchinput}
+            />
+          </View>
+          <View style={styles.row4}>
+            <View style={styles.column8}>
+              <View style={styles.box4}></View>
+              <Text style={styles.text9}>{'Science'}</Text>
+            </View>
+            <View style={styles.column9}>
+              <View style={styles.box5}></View>
+              <Text style={styles.text10}>{'Language'}</Text>
+            </View>
+            <View style={styles.column9}>
+              <View style={styles.box5}></View>
+              <Text style={styles.text11}>{'Math'}</Text>
+            </View>
+          </View>  
+          <View style={styles.row4}>
+            <View style={styles.column8}>
+              <View style={styles.box4}></View>
+              <Text style={styles.text9}>{'Art'}</Text>
+            </View>
+            <View style={styles.column9}>
+              <View style={styles.box5}></View>
+              <Text style={styles.text10}>{'History'}</Text>
+            </View>
+            <View style={styles.column9}>
+              <View style={styles.box5}></View>
+              <Text style={styles.text11}>{'Coding'}</Text>
+            </View>
+          </View> 
+          </LinearGradient>
+        </View>
+        <View style={styles.container_cource}>
+          <Text style={styles.popularCoursesTitle}>Popular Courses</Text>
+          <View style={styles.column5}>
+            <View style={styles.box3}></View>
+            <View style={styles.row3}>
+              <View style={styles.column6}>
+                <Text style={styles.text5}>{'Title of Course'}</Text>
+                <Text style={styles.text6}>{'Author Name'}</Text>
+              </View>
+              <View style={styles.view}>
+                <Text style={styles.text7}>{'Subject'}</Text>
+              </View>
+              <View style={styles.view2}>
+                <Text style={styles.text7}>{'Age Range'}</Text>
+              </View>
+            </View>
+          </View>
+          <View style={styles.column5}>
+            <View style={styles.box3}></View>
+            <View style={styles.row3}>
+              <View style={styles.column6}>
+                <Text style={styles.text8}>{'Title of Game'}</Text>
+                <Text style={styles.text6}>{'Description of Game'}</Text>
+              </View>
+              <View style={styles.view}>
+                <Text style={styles.text7}>{'Subject'}</Text>
+              </View>
+              <View style={styles.view2}>
+                <Text style={styles.text7}>{'Age Range'}</Text>
+              </View>
+            </View>
           </View>
         </View>
-        <View style={styles.iconContainer}>
-          <TouchableOpacity accessibilityRole="button" accessibilityLabel="Notifications">
-            <Image
-              resizeMode="contain"
-              source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/5058d616a6beba3dc75342aa29cd6b035c3d96c69a7f59f1e486dcd1515d02ad?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d" }}
-              style={styles.icon}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity accessibilityRole="button" accessibilityLabel="Settings">
-            <Image
-              resizeMode="contain"
-              source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/dffca1273bc2f1dbf79bb4c2ba2e67ab9c0c8066e183d20d6869f2c06d032e2c?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d" }}
-              style={styles.icon}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
-      <View style={styles.contentContainer} />
-      <View style={styles.popularCoursesContainer}>
-        <Text style={styles.popularCoursesTitle}>Popular Courses</Text>
-        <Image
-          resizeMode="contain"
-          source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/58788809a1d443684976342c352134525e1a5a4e1e9649d43ca8405a1d141c0c?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d" }}
-          style={styles.popularCoursesImage}
-          accessible={true}
-          accessibilityLabel="Popular courses preview"
-        />
-      </View>
-      <LinearGradient
-        colors={['#CA6955', '#CF7067', '#D26187']}
-        start={{ x: 1, y: 0 }}
-        end={{ x: 0, y: 0 }}
-        style={styles.navigationBar}
-      >
-        {[
-          { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/a76525bf9f1c39fd8f24688a99c2de6914531b071a86079b73c0d8e78045e773?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d", label: "Profile" },
-          { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/c475584b766f01aa80e7a2931c042af6de6396c862f18a954d78cbbe58128dba?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d", label: "Open Courses" },
-          { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/26b2b55409fd4d5ec15c93e27c0ed8af01b66edcce02ec2e86737ba6c04df22b?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d", label: "Courses" },
-          { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/224d416f1f54ab8e851be30f8ccaa444f7f4980e2b3ea65f316e025c6bd5fdc1?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d", label: "Games" },
-          { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/9f1fe60e52c311815785c581fae42621feb0739b5b496b4c72ca8c79a77fe912?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d", label: "Search" },
-        ].map((item, index) => (
-          <TouchableOpacity
-            key={index}
-            style={styles.navigationItem}
-            accessibilityRole="button"
-            accessibilityLabel={item.label}
-          >
-            <Image
-              resizeMode="contain"
-              source={{ uri: item.icon }}
-              style={styles.navigationIcon}
-            />
-            <Text style={styles.navigationLabel}>{item.label}</Text>
-          </TouchableOpacity>
-        ))}
-      </LinearGradient>
-    </View>
+      </ScrollView>
+      <Footer />
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    maxWidth: 480,
-    width: '100%',
-    overflow: 'hidden',
+    backgroundColor: '#FFFFFF',
   },
-  header: {
+  container_cource:{
+    marginTop:16,
+    marginBottom: 16,
+  },
+  container_shadow:{
+    borderRadius: 1, // Adjust to match the shape of your gradient box
+    overflow: 'hidden', // Ensures shadow doesn't spill outside the border radius
+    shadowColor: '#000', // Shadow color
+    shadowOffset: { width: 0, height: 2 }, // Shadow offset
+    shadowOpacity: 0.2, // Shadow opacity
+    shadowRadius: 4, // Shadow blur
+    elevation: 5, // Shadow for Android
+  },
+  gradient: {
+    // Adjust height according to your layout
+    width: '100%', // Takes the full width of its parent
+  },
+  box: {
+    flex: 1,
+    alignSelf: 'stretch',
+  },
+  box3: {
+    height: 122,
+    backgroundColor: '#BCE0FD',
+    borderColor: '#5E27FD',
+    borderWidth: 1,
+    marginBottom: 16,
+    marginLeft:10,
+    marginRight:10,
+    marginTop:10,
+  },
+  box4: {
+    height: 76,
+    borderColor: '#5E27FD',
+    borderWidth: 1,
+    marginBottom: 15,
+    marginLeft:10,
+    marginRight:10,
+    marginTop:10,
+  },
+  box5: {
+    height: 76,
+    borderColor: '#5E27FD',
+    borderWidth: 1,
+    marginBottom: 16,
+    marginLeft:10,
+    marginRight:10,
+    marginTop:10,
+  },
+  column: {
+    width: 16,
+    marginRight: 24,
+  },
+  column3: {
+    width: 93,
+    marginRight: 29,
+  },
+  column4: {
+    flex: 1,
+  },
+  column5: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    paddingBottom: 18,
+    marginBottom: 12,
+    marginHorizontal: 16,
+    borderColor: '#68D391', // Border color
+    borderWidth: 2, // Border width
+    borderRadius: 8,
+  },
+  column6: {
+    flex: 1,
+    marginRight: 4,
+  },
+  column7: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    paddingBottom: 19,
+    marginBottom: 44,
+    marginHorizontal: 16,
+  },
+  column8: {
+    width: 114,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    paddingBottom: 15,
+  },
+  column9: {
+    width: 114,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    paddingBottom: 14,
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 10,
+    width: 99,
+    height: 99,
+    borderColor: '#5E27FD',
+    borderWidth: 1,
+    marginRight: 30,
+  },
+
+  image6: {
+    height: 40,
+    marginBottom: 4,
+    marginHorizontal: 8,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 22,
+    paddingHorizontal: 16,
+  },
+  row2: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderColor: '#5E27FD',
+    borderWidth: 1,
+    paddingVertical: 18,
+    paddingHorizontal: 23,
+    marginBottom: 16,
+  },
+  row3: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 8,
+  },
+  row4: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingHorizontal: 19,
-    paddingTop: 19,
-    paddingBottom: 12,
+    marginBottom: 16,
+    marginHorizontal: 16,
   },
-  logoContainer: {
-    flexDirection: 'row',
+  scrollView: {
+    flex: 1,
+    backgroundColor: '#FFFFFF ',
+  },
+  text: {
+    color: '#FFFFFF',
+    fontSize: 18,
+  },
+  text2: {
+    color: '#181818',
+    fontSize: 20,
+    marginBottom: 5,
+  },
+  text3: {
+    color: '#181818',
+    fontSize: 10,
+    width: 93,
+  },
+  text4: {
+    color: '#181818',
+    fontSize: 12,
+  },
+  text5: {
+    color: '#272727',
+    fontSize: 12,
+    marginBottom: 7,
+  },
+  text6: {
+    color: '#272727',
+    fontSize: 12,
+  },
+  text7: {
+    color: '#FFFFFF',
+    fontSize: 12,
+  },
+  text8: {
+    color: '#272727',
+    fontSize: 12,
+    marginBottom: 6,
+  },
+  text9: {
+    color: '#272727',
+    fontSize: 12,
+    marginLeft: 34,
+  },
+  text10: {
+    color: '#272727',
+    fontSize: 12,
+    marginLeft: 26,
+  },
+  text11: {
+    color: '#272727',
+    fontSize: 12,
+    marginLeft: 42,
+  },
+  view: {
+    width: 77,
     alignItems: 'center',
-    gap: 8,
+    backgroundColor: '#34CC99',
+    borderRadius: 8,
+    paddingVertical: 10,
+    marginRight: 8,
+  },
+  view2: {
+    width: 98,
+    alignItems: 'center',
+    backgroundColor: '#34CC99',
+    borderRadius: 8,
+    paddingVertical: 11,
   },
   logo: {
     width: 39,
@@ -122,22 +334,18 @@ const styles = StyleSheet.create({
     aspectRatio: 1.04,
   },
   contentContainer: {
-    minHeight: 361,
-    width: '100%',
+    minHeight: 50,
   },
   popularCoursesContainer: {
-    alignItems: 'center',
   },
   popularCoursesTitle: {
     color: '#282828',
     fontSize: 14,
-    fontFamily: 'Poppins-Bold',
-    marginTop: 20,
-    marginLeft: 12,
+    fontFamily: 'Calibri',
+    fontWeight: 'bold', 
+    textAlign: 'center',
   },
   popularCoursesImage: {
-    width: '100%',
-    maxWidth: 350,
     aspectRatio: 1.1,
     marginTop: 10,
   },
@@ -162,6 +370,30 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 4,
   },
+  searchcontainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderColor: '#68D391',
+    borderRadius: 8,
+    paddingHorizontal: 24,
+    paddingVertical: 14,
+    marginTop: 10,
+    marginBottom: 25,
+    marginLeft:15,
+    marginRight:15,
+    borderColor: '#68D391', // Border color
+    borderWidth: 2, // Border width
+    borderRadius: 8,
+  },
+  searchicon: {
+    width: 20,
+    height: 20,
+    marginRight: 8,
+  },
+  searchinput: {
+    flex: 1,
+    fontSize: 16,
+    color: '#333',
+  },
 });
-
-export default LotusLearning;

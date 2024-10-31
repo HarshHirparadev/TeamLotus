@@ -1,241 +1,421 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet, ScrollView } from 'react-native';
-
-const Header = () => (
-  <View style={styles.headerContainer}>
-    <View style={styles.logoContainer}>
-      <Image
-        resizeMode="contain"
-        source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/0d01799ec11e6b0c3ba635a26356bfbf45c67b335499428f03587d349ae335d6?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d" }}
-        style={styles.logo}
-        accessible={true}
-        accessibilityLabel="Lotus Learning logo"
-      />
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Lotus Learning</Text>
-      </View>
-    </View>
-    <View style={styles.iconContainer}>
-      <Image
-        resizeMode="contain"
-        source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/e012c9be37ffc8aef745d49ab6fe02361d8e5b92c0ef6a18ba8c558b77a95f9d?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d" }}
-        style={styles.icon}
-        accessible={true}
-        accessibilityLabel="Notification icon"
-      />
-      <Image
-        resizeMode="contain"
-        source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/fadeed90b595dd690466f7eff45031ff46c5a964f99e50fc7918036db32eb426?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d" }}
-        style={styles.icon}
-        accessible={true}
-        accessibilityLabel="Settings icon"
-      />
-    </View>
-  </View>
-);
-
-const CourseDescription = () => (
-  <View style={styles.descriptionContainer}>
-    <View style={styles.titleContainer}>
-      <Text style={styles.descriptionTitle}>Description of Course</Text>
-    </View>
-    <View style={styles.textContainer}>
-      <Text style={styles.text}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-      </Text>
-    </View>
-    <Image
-      resizeMode="contain"
-      source={{ uri: "https://cdn.builder.io/api/v1/image/assets/TEMP/05ba1c06bb3854b5583baf4687adc04d9afa99eff313148092d3cb6d7cf0f535?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d" }}
-      style={styles.descriptionImage}
-      accessible={true}
-      accessibilityLabel="Course illustration"
-    />
-  </View>
-);
-
-const NavigationItem = ({ icon, label }) => (
-  <View style={styles.navItem}>
-    <Image
-      resizeMode="contain"
-      source={{ uri: icon }}
-      style={styles.navIcon}
-      accessible={true}
-      accessibilityLabel={`${label} icon`}
-    />
-    <View>
-      <Text style={styles.navLabel}>{label}</Text>
-    </View>
-  </View>
-);
-
-const navigationItems = [
-  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/a76525bf9f1c39fd8f24688a99c2de6914531b071a86079b73c0d8e78045e773?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d", label: "Profile" },
-  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/631d7888b476fd63de3c41c30438d4068583387bcd4c985f62ef9803272e3bc4?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d", label: "Open Courses" },
-  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/aaf4efc902495a4143931f3f3bb684fe768f93c9a8073405bd642c425055147b?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d", label: "Courses" },
-  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/7672b39c11fa65f242c5d5574dd1511b58e669827cae4a9bca738be44a6f486f?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d", label: "Games" },
-  { icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/9f1fe60e52c311815785c581fae42621feb0739b5b496b4c72ca8c79a77fe912?placeholderIfAbsent=true&apiKey=fea318398af941d6ba1e4b90c241b17d", label: "Search" },
-];
-
-const Navigation = () => (
-  <View style={styles.navigationContainer}>
-    <View style={styles.navItemsContainer}>
-      {navigationItems.map((item, index) => (
-        <NavigationItem key={index} icon={item.icon} label={item.label} />
-      ))}
-    </View>
-  </View>
-);
-
-const LotusLearningApp = () => (
-  <ScrollView contentContainerStyle={styles.scrollViewContent}>
-    <View style={styles.mainContainer}>
+import {
+  SafeAreaView,
+  View,
+  ScrollView,
+  Image,
+  Text,
+  StyleSheet,  
+  TouchableOpacity,
+  TextInput,
+} from 'react-native';
+import { Header } from './header';
+import { Footer } from './footer';
+import { LinearGradient } from 'expo-linear-gradient';
+import { faBold } from '@fortawesome/free-solid-svg-icons';
+import { Ionicons } from '@expo/vector-icons';
+export default (props) => {
+  return (
+    <SafeAreaView style={styles.container}>
       <Header />
-      <View style={styles.spacer} />
-      <CourseDescription />
-      <Navigation />
-    </View>
-  </ScrollView>
-);
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.searchcontainer}>
+        <Ionicons name="search" size={25} color="#68D391" style={styles.icon} />
+          <TextInput
+            style={styles.searchinput}
+          />
+        </View>
+          <View style={styles.row4}>
+            <View style={styles.column5}>
+              <View style={styles.box3}></View>
+              <View style={styles.row3}>
+                <View style={styles.column6}>
+                  <Text style={styles.text5}>{'Title of Course'}</Text>
+                  <Text style={styles.text6}>{'Author Name'}</Text>
+                </View>
+                <View style={styles.view}>
+                  <Text style={styles.text7}>{'Subject'}</Text>
+                </View>
+                <View style={styles.view2}>
+                  <Text style={styles.text7}>{'Age Range'}</Text>
+                </View>
+              </View>
+            </View>
+            <View style={styles.column5}>
+              <View style={styles.box3}></View>
+              <View style={styles.row3}>
+                <View style={styles.column6}>
+                  <Text style={styles.text5}>{'Title of Course'}</Text>
+                  <Text style={styles.text6}>{'Author Name'}</Text>
+                </View>
+                <View style={styles.view}>
+                  <Text style={styles.text7}>{'Subject'}</Text>
+                </View>
+                <View style={styles.view2}>
+                  <Text style={styles.text7}>{'Age Range'}</Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View style={styles.row4}>
+            <View style={styles.column5}>
+              <View style={styles.box3}></View>
+              <View style={styles.row3}>
+                <View style={styles.column6}>
+                  <Text style={styles.text5}>{'Title of Course'}</Text>
+                  <Text style={styles.text6}>{'Author Name'}</Text>
+                </View>
+                <View style={styles.view}>
+                  <Text style={styles.text7}>{'Subject'}</Text>
+                </View>
+                <View style={styles.view2}>
+                  <Text style={styles.text7}>{'Age Range'}</Text>
+                </View>
+              </View>
+            </View>
+            <View style={styles.column5}>
+              <View style={styles.box3}></View>
+              <View style={styles.row3}>
+                <View style={styles.column6}>
+                  <Text style={styles.text5}>{'Title of Course'}</Text>
+                  <Text style={styles.text6}>{'Author Name'}</Text>
+                </View>
+                <View style={styles.view}>
+                  <Text style={styles.text7}>{'Subject'}</Text>
+                </View>
+                <View style={styles.view2}>
+                  <Text style={styles.text7}>{'Age Range'}</Text>
+                </View>
+              </View>
+            </View>
+          </View><View style={styles.row4}>
+            <View style={styles.column5}>
+              <View style={styles.box3}></View>
+              <View style={styles.row3}>
+                <View style={styles.column6}>
+                  <Text style={styles.text5}>{'Title of Course'}</Text>
+                  <Text style={styles.text6}>{'Author Name'}</Text>
+                </View>
+                <View style={styles.view}>
+                  <Text style={styles.text7}>{'Subject'}</Text>
+                </View>
+                <View style={styles.view2}>
+                  <Text style={styles.text7}>{'Age Range'}</Text>
+                </View>
+              </View>
+            </View>
+            <View style={styles.column5}>
+              <View style={styles.box3}></View>
+              <View style={styles.row3}>
+                <View style={styles.column6}>
+                  <Text style={styles.text5}>{'Title of Course'}</Text>
+                  <Text style={styles.text6}>{'Author Name'}</Text>
+                </View>
+                <View style={styles.view}>
+                  <Text style={styles.text7}>{'Subject'}</Text>
+                </View>
+                <View style={styles.view2}>
+                  <Text style={styles.text7}>{'Age Range'}</Text>
+                </View>
+              </View>
+            </View>
+          </View>
+      </ScrollView>
+      <Footer />
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
-  scrollViewContent: {
-    flexGrow: 1,
-  },
-  mainContainer: {
+  container: {
     flex: 1,
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    maxWidth: 480,
-    width: '100%',
-    flexDirection: 'column',
-    overflow: 'hidden',
-    alignItems: 'stretch',
+    backgroundColor: '#FFFFFF',
   },
-  headerContainer: {
-    display: 'flex',
-    width: '100%',
-    paddingLeft: 19,
-    paddingRight: 19,
-    paddingTop: 19,
-    paddingBottom: 12,
-    alignItems: 'stretch',
-    gap: 20,
+  container_cource:{
+    marginTop:16,
+    marginBottom: 16,
+  },
+  container_shadow:{
+    borderRadius: 1, // Adjust to match the shape of your gradient box
+    overflow: 'hidden', // Ensures shadow doesn't spill outside the border radius
+    shadowColor: '#000', // Shadow color
+    shadowOffset: { width: 0, height: 2 }, // Shadow offset
+    shadowOpacity: 0.2, // Shadow opacity
+    shadowRadius: 4, // Shadow blur
+    elevation: 5, // Shadow for Android
+  },
+  gradient: {
+    // Adjust height according to your layout
+    width: '100%', // Takes the full width of its parent
+  },
+  box: {
+    flex: 1,
+    alignSelf: 'stretch',
+  },
+  box3: {
+    height: 122,
+    backgroundColor: '#BCE0FD',
+    borderColor: '#68D391',
+    borderWidth: 1,
+    marginBottom: 16,
+    marginLeft:10,
+    marginRight:10,
+    marginTop:10,
+  },
+  box4: {
+    height: 76,
+    borderColor: '#5E27FD',
+    borderWidth: 1,
+    marginBottom: 15,
+  },
+  box5: {
+    height: 76,
+    backgroundColor: '#BCE0FD',
+    borderColor: '#5E27FD',
+    borderWidth: 1,
+    marginBottom: 16,
+  },
+  column: {
+    width: 16,
+    marginRight: 24,
+  },
+  column3: {
+    width: 93,
+    marginRight: 29,
+  },
+  column4: {
+    flex: 1,
+  },
+  column5: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    paddingBottom: 18,
+    marginBottom: 12,
+    marginHorizontal: 16,
+    borderColor: '#68D391', // Border color
+    borderWidth: 2, // Border width
+    borderRadius: 8,
+  },
+  column6: {
+    flex: 1,
+    marginRight: 4,
+  },
+  column7: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    paddingBottom: 19,
+    marginBottom: 44,
+    marginHorizontal: 16,
+  },
+  column8: {
+    width: 114,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    paddingBottom: 15,
+  },
+  column9: {
+    width: 114,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    paddingBottom: 14,
+  },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 10,
+    width: 99,
+    height: 99,
+    borderColor: '#5E27FD',
+    borderWidth: 1,
+    marginRight: 30,
+  },
+
+  image6: {
+    height: 40,
+    marginBottom: 4,
+    marginHorizontal: 8,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 22,
+    paddingHorizontal: 16,
+  },
+  row2: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderColor: '#5E27FD',
+    borderWidth: 1,
+    paddingVertical: 18,
+    paddingHorizontal: 23,
+    marginBottom: 16,
+  },
+  row3: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginHorizontal: 8,
+  },
+  row4: {
+    flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+    marginHorizontal: 16,
   },
-  logoContainer: {
-    display: 'flex',
-    alignItems: 'stretch',
-    gap: 8,
-    fontFamily: 'Poppins, sans-serif',
+  scrollView: {
+    flex: 1,
+    backgroundColor: '#FFFFFF',
+  },
+  text: {
+    color: '#FFFFFF',
     fontSize: 18,
-    color: 'rgba(255, 255, 255, 1)',
-    fontWeight: '500',
+  },
+  text2: {
+    color: '#181818',
+    fontSize: 20,
+    marginBottom: 5,
+  },
+  text3: {
+    color: '#181818',
+    fontSize: 10,
+    width: 93,
+  },
+  text4: {
+    color: '#181818',
+    fontSize: 12,
+  },
+  text5: {
+    color: '#272727',
+    fontSize: 12,
+    marginBottom: 7,
+  },
+  text6: {
+    color: '#272727',
+    fontSize: 12,
+  },
+  text7: {
+    color: '#FFFFFF',
+    fontSize: 12,
+  },
+  text8: {
+    color: '#272727',
+    fontSize: 12,
+    marginBottom: 6,
+  },
+  text9: {
+    color: '#272727',
+    fontSize: 12,
+    marginLeft: 34,
+  },
+  text10: {
+    color: '#272727',
+    fontSize: 12,
+    marginLeft: 26,
+  },
+  text11: {
+    color: '#272727',
+    fontSize: 12,
+    marginLeft: 42,
+  },
+  view: {
+    width: 77,
+    alignItems: 'center',
+    backgroundColor: '#34CC99',
+    borderRadius: 8,
+    paddingVertical: 10,
+    marginRight: 8,
+  },
+  view2: {
+    width: 98,
+    alignItems: 'center',
+    backgroundColor: '#34CC99',
+    borderRadius: 8,
+    paddingVertical: 11,
   },
   logo: {
-    position: 'relative',
-    display: 'flex',
     width: 39,
-    flexShrink: 0,
-    aspectRatio: 1.34,
+    aspectRatio: 1.3,
   },
   titleContainer: {
     flexBasis: 'auto',
   },
   title: {
-    color: 'rgba(255, 255, 255, 1)',
+    fontFamily: 'Poppins-Medium',
     fontSize: 18,
-    fontWeight: '500',
+    color: '#FFFFFF',
   },
   iconContainer: {
-    display: 'flex',
-    alignItems: 'stretch',
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 19,
   },
   icon: {
-    position: 'relative',
-    display: 'flex',
     width: 27,
-    flexShrink: 0,
-    aspectRatio: 1.08,
+    aspectRatio: 1.04,
   },
-  spacer: {
-    display: 'flex',
-    minHeight: 190,
-    width: '100%',
+  contentContainer: {
+    minHeight: 50,
   },
-  descriptionContainer: {
-    display: 'flex',
-    marginTop: 7,
-    width: '100%',
-    paddingLeft: 20,
-    paddingRight: 20,
-    flexDirection: 'column',
-    fontFamily: 'Poppins, sans-serif',
-    color: 'rgba(40, 40, 40, 1)',
-    fontWeight: '400',
+  popularCoursesContainer: {
   },
-  descriptionTitle: {
-    fontSize: 13,
-    fontWeight: '400',
-    color: 'rgba(40, 40, 40, 1)',
+  popularCoursesTitle: {
+    color: '#282828',
+    fontSize: 14,
+    fontFamily: 'Calibri',
+    fontWeight: 'bold', 
+    textAlign: 'center',
   },
-  textContainer: {
-    fontSize: 11,
-    marginTop: 34,
+  popularCoursesImage: {
+    aspectRatio: 1.1,
+    marginTop: 10,
   },
-  text: {
-    fontSize: 11,
-    fontWeight: '400',
-    color: 'rgba(40, 40, 40, 1)',
-  },
-  descriptionImage: {
-    borderTopLeftRadius: 0,
-    borderTopRightRadius: 0,
-    borderBottomRightRadius: 0,
-    borderBottomLeftRadius: 0,
-    alignSelf: 'stretch',
-    position: 'relative',
-    display: 'flex',
-    marginTop: 53,
-    aspectRatio: 1.06,
-  },
-  navigationContainer: {
-    display: 'flex',
-    width: '100%',
-    paddingLeft: 30,
-    paddingRight: 30,
-    paddingTop: 14,
-    paddingBottom: 14,
-    gap: 20,
-    justifyContent: 'space-between',
-    backgroundColor: 'linear-gradient(270deg, #CA6955 0%, #CF7067 45%, #D26187 100%)',
-  },
-  navItemsContainer: {
-    display: 'flex',
+  navigationBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: '100%',
+    paddingHorizontal: 30,
+    paddingVertical: 14,
+    marginTop: 10,
   },
-  navItem: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'stretch',
+  navigationItem: {
+    alignItems: 'center',
   },
-  navIcon: {
-    alignSelf: 'center',
-    position: 'relative',
-    display: 'flex',
+  navigationIcon: {
     width: 24,
     aspectRatio: 1.26,
   },
-  navLabel: {
-    fontFamily: 'Poppins, sans-serif',
+  navigationLabel: {
+    fontFamily: 'Poppins-Regular',
     fontSize: 10,
-    color: 'rgba(255, 255, 255, 1)',
-    fontWeight: '400',
+    color: '#FFFFFF',
     textAlign: 'center',
+    marginTop: 4,
+  },
+  searchcontainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    paddingHorizontal: 24,
+    paddingVertical: 14,
+    marginTop: 10,
+    marginBottom: 5,
+    marginLeft:15,
+    marginRight:15,
+    borderColor: '#68D391', // Border color
+    borderWidth: 2, // Border width
+    borderRadius: 8, 
+  },
+  searchicon: {
+    width: 20,
+    height: 20,
+    marginRight: 8,
+  },
+  searchinput: {
+    flex: 1,
+    fontSize: 16,
+    color: '#333', 
+    
   },
 });
-
-export default LotusLearningApp;
