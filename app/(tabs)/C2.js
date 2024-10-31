@@ -25,101 +25,108 @@ export default (props) => {
             style={styles.searchinput}
           />
         </View>
-          <View style={styles.row4}>
-            <View style={styles.column5}>
-              <View style={styles.box3}></View>
-              <View style={styles.row3}>
-                <View style={styles.column6}>
-                  <Text style={styles.text5}>{'Title of Course'}</Text>
-                  <Text style={styles.text6}>{'Author Name'}</Text>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
+            <View style={styles.row4}>
+              <View style={styles.column5}>
+                <View style={styles.box3}></View>
+                <View style={styles.row3}>
+                  <View style={styles.column6}>
+                    <Text style={styles.text5}>{'Title of Course'}</Text>
+                    <Text style={styles.text6}>{'Author Name'}</Text>
+                  </View>
+                  <View style={styles.view}>
+                    <Text style={styles.text7}>{'Subject'}</Text>
+                  </View>
+                  <View style={styles.view2}>
+                    <Text style={styles.text7}>{'Age Range'}</Text>
+                  </View>
                 </View>
-                <View style={styles.view}>
-                  <Text style={styles.text7}>{'Subject'}</Text>
-                </View>
-                <View style={styles.view2}>
-                  <Text style={styles.text7}>{'Age Range'}</Text>
+              </View>
+              <View style={styles.column5}>
+                <View style={styles.box3}></View>
+                <View style={styles.row3}>
+                  <View style={styles.column6}>
+                    <Text style={styles.text5}>{'Title of Course'}</Text>
+                    <Text style={styles.text6}>{'Author Name'}</Text>
+                  </View>
+                  <View style={styles.view}>
+                    <Text style={styles.text7}>{'Subject'}</Text>
+                  </View>
+                  <View style={styles.view2}>
+                    <Text style={styles.text7}>{'Age Range'}</Text>
+                  </View>
                 </View>
               </View>
             </View>
-            <View style={styles.column5}>
-              <View style={styles.box3}></View>
-              <View style={styles.row3}>
-                <View style={styles.column6}>
-                  <Text style={styles.text5}>{'Title of Course'}</Text>
-                  <Text style={styles.text6}>{'Author Name'}</Text>
+          </ScrollView>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
+            <View style={styles.row4}>
+              <View style={styles.column5}>
+                <View style={styles.box3}></View>
+                <View style={styles.row3}>
+                  <View style={styles.column6}>
+                    <Text style={styles.text5}>{'Title of Course'}</Text>
+                    <Text style={styles.text6}>{'Author Name'}</Text>
+                  </View>
+                  <View style={styles.view}>
+                    <Text style={styles.text7}>{'Subject'}</Text>
+                  </View>
+                  <View style={styles.view2}>
+                    <Text style={styles.text7}>{'Age Range'}</Text>
+                  </View>
                 </View>
-                <View style={styles.view}>
-                  <Text style={styles.text7}>{'Subject'}</Text>
-                </View>
-                <View style={styles.view2}>
-                  <Text style={styles.text7}>{'Age Range'}</Text>
+              </View>
+              <View style={styles.column5}>
+                <View style={styles.box3}></View>
+                <View style={styles.row3}>
+                  <View style={styles.column6}>
+                    <Text style={styles.text5}>{'Title of Course'}</Text>
+                    <Text style={styles.text6}>{'Author Name'}</Text>
+                  </View>
+                  <View style={styles.view}>
+                    <Text style={styles.text7}>{'Subject'}</Text>
+                  </View>
+                  <View style={styles.view2}>
+                    <Text style={styles.text7}>{'Age Range'}</Text>
+                  </View>
                 </View>
               </View>
             </View>
-          </View>
-          <View style={styles.row4}>
-            <View style={styles.column5}>
-              <View style={styles.box3}></View>
-              <View style={styles.row3}>
-                <View style={styles.column6}>
-                  <Text style={styles.text5}>{'Title of Course'}</Text>
-                  <Text style={styles.text6}>{'Author Name'}</Text>
+          </ScrollView>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
+            <View style={styles.row4}>
+              <View style={styles.column5}>
+                <View style={styles.box3}></View>
+                <View style={styles.row3}>
+                  <View style={styles.column6}>
+                    <Text style={styles.text5}>{'Title of Course'}</Text>
+                    <Text style={styles.text6}>{'Author Name'}</Text>
+                  </View>
+                  <View style={styles.view}>
+                    <Text style={styles.text7}>{'Subject'}</Text>
+                  </View>
+                  <View style={styles.view2}>
+                    <Text style={styles.text7}>{'Age Range'}</Text>
+                  </View>
                 </View>
-                <View style={styles.view}>
-                  <Text style={styles.text7}>{'Subject'}</Text>
-                </View>
-                <View style={styles.view2}>
-                  <Text style={styles.text7}>{'Age Range'}</Text>
+              </View>
+              <View style={styles.column5}>
+                <View style={styles.box3}></View>
+                <View style={styles.row3}>
+                  <View style={styles.column6}>
+                    <Text style={styles.text5}>{'Title of Course'}</Text>
+                    <Text style={styles.text6}>{'Author Name'}</Text>
+                  </View>
+                  <View style={styles.view}>
+                    <Text style={styles.text7}>{'Subject'}</Text>
+                  </View>
+                  <View style={styles.view2}>
+                    <Text style={styles.text7}>{'Age Range'}</Text>
+                  </View>
                 </View>
               </View>
             </View>
-            <View style={styles.column5}>
-              <View style={styles.box3}></View>
-              <View style={styles.row3}>
-                <View style={styles.column6}>
-                  <Text style={styles.text5}>{'Title of Course'}</Text>
-                  <Text style={styles.text6}>{'Author Name'}</Text>
-                </View>
-                <View style={styles.view}>
-                  <Text style={styles.text7}>{'Subject'}</Text>
-                </View>
-                <View style={styles.view2}>
-                  <Text style={styles.text7}>{'Age Range'}</Text>
-                </View>
-              </View>
-            </View>
-          </View><View style={styles.row4}>
-            <View style={styles.column5}>
-              <View style={styles.box3}></View>
-              <View style={styles.row3}>
-                <View style={styles.column6}>
-                  <Text style={styles.text5}>{'Title of Course'}</Text>
-                  <Text style={styles.text6}>{'Author Name'}</Text>
-                </View>
-                <View style={styles.view}>
-                  <Text style={styles.text7}>{'Subject'}</Text>
-                </View>
-                <View style={styles.view2}>
-                  <Text style={styles.text7}>{'Age Range'}</Text>
-                </View>
-              </View>
-            </View>
-            <View style={styles.column5}>
-              <View style={styles.box3}></View>
-              <View style={styles.row3}>
-                <View style={styles.column6}>
-                  <Text style={styles.text5}>{'Title of Course'}</Text>
-                  <Text style={styles.text6}>{'Author Name'}</Text>
-                </View>
-                <View style={styles.view}>
-                  <Text style={styles.text7}>{'Subject'}</Text>
-                </View>
-                <View style={styles.view2}>
-                  <Text style={styles.text7}>{'Age Range'}</Text>
-                </View>
-              </View>
-            </View>
-          </View>
+          </ScrollView>
       </ScrollView>
       <Footer />
     </SafeAreaView>
@@ -416,6 +423,5 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 16,
     color: '#333', 
-    
   },
 });

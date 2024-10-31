@@ -30,34 +30,46 @@ export default (props) => {
               style={styles.searchinput}
             />
           </View>
-          <View style={styles.row4}>
-            <View style={styles.column8}>
-              <View style={styles.box4}></View>
-              <Text style={styles.text9}>{'Science'}</Text>
-            </View>
-            <View style={styles.column9}>
-              <View style={styles.box5}></View>
-              <Text style={styles.text10}>{'Language'}</Text>
-            </View>
-            <View style={styles.column9}>
-              <View style={styles.box5}></View>
-              <Text style={styles.text11}>{'Math'}</Text>
-            </View>
-          </View>  
-          <View style={styles.row4}>
-            <View style={styles.column8}>
-              <View style={styles.box4}></View>
-              <Text style={styles.text9}>{'Art'}</Text>
-            </View>
-            <View style={styles.column9}>
-              <View style={styles.box5}></View>
-              <Text style={styles.text10}>{'History'}</Text>
-            </View>
-            <View style={styles.column9}>
-              <View style={styles.box5}></View>
-              <Text style={styles.text11}>{'Coding'}</Text>
-            </View>
-          </View> 
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
+            <View style={styles.row4}>
+              <View style={styles.column8}>
+                <View style={styles.box4}></View>
+                <Text style={styles.text9}>{'Science'}</Text>
+              </View>
+              <View style={styles.column8}>
+                <View style={styles.box5}></View>
+                <Text style={styles.text10}>{'Language'}</Text>
+              </View>
+              <View style={styles.column8}>
+                <View style={styles.box5}></View>
+                <Text style={styles.text11}>{'Math'}</Text>
+              </View>
+              <View style={styles.column8}>
+                <View style={styles.box4}></View>
+                <Text style={styles.text9}>{'Art'}</Text>
+              </View>
+            </View>  
+          </ScrollView>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.scrollContainer}>
+            <View style={styles.row4}>
+              <View style={styles.column8}>
+                <View style={styles.box4}></View>
+                <Text style={styles.text9}>{'Art'}</Text>
+              </View>
+              <View style={styles.column8}>
+                <View style={styles.box5}></View>
+                <Text style={styles.text10}>{'History'}</Text>
+              </View>
+              <View style={styles.column8}>
+                <View style={styles.box5}></View>
+                <Text style={styles.text11}>{'Coding'}</Text>
+              </View>
+              <View style={styles.column8}>
+                <View style={styles.box5}></View>
+                <Text style={styles.text11}>{'Math'}</Text>
+              </View>
+            </View> 
+          </ScrollView>
           </LinearGradient>
         </View>
         <View style={styles.container_cource}>
@@ -107,6 +119,9 @@ const styles = StyleSheet.create({
   container_cource:{
     marginTop:16,
     marginBottom: 16,
+  },
+  scrollContainer: {
+    flexDirection: 'row',
   },
   container_shadow:{
     borderRadius: 1, // Adjust to match the shape of your gradient box
@@ -190,6 +205,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 8,
     paddingBottom: 15,
+    marginRight:5,
   },
   column9: {
     width: 114,
