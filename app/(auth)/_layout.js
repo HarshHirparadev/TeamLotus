@@ -7,7 +7,7 @@ import { useGlobalContext } from "../../context/GlobalProvider";
 const AuthLayout = () => {
   const { loading, isLogged } = useGlobalContext();
 
-  if (!loading && isLogged) return <Redirect href="/explore" />;
+  // if (!loading && isLogged) return <Redirect href="/explore" />;
 
   return (
     <>
@@ -20,6 +20,13 @@ const AuthLayout = () => {
         />
         <Stack.Screen
           name="signup"
+          options={{
+            headerShown: false,
+          }}
+        />
+        
+        <Stack.Screen
+          name="b2"
           options={{
             headerShown: false,
           }}

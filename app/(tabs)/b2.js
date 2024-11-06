@@ -12,7 +12,7 @@ import { LinearGradient } from 'expo-linear-gradient'; // Install LinearGradient
 import { Header } from './header';
 import { Footer } from './footer';
 
-export default (props) => {
+const b2 = () => {
   const [activeTab, setActiveTab] = useState('inProgress');
 
   const courses = [
@@ -101,6 +101,8 @@ export default (props) => {
     </SafeAreaView>
   );
 };
+
+export default b2;
 
 const styles = StyleSheet.create({
   container: {
