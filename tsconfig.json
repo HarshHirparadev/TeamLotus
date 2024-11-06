@@ -14,5 +14,5 @@
     "app/_layout.js",
     "app/(tabs)/index.js",
     "app/(tabs)/b2.js"
-  ]
+, "app/(tabs)/App.js", "app/(tabs)/_layout.js", "context/AuthContext.js"  ]
 }

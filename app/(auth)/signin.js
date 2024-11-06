@@ -46,7 +46,7 @@ const SignUpScreen = () => {
           <TextInput style={styles.inputBox} placeholder="Enter your password" placeholderTextColor="#757575" secureTextEntry />
 
           <TouchableOpacity style={styles.signUpButton}>
-            <Text style={styles.signUpText}>Sign Up</Text>
+            <Text style={styles.signUpText}>Sign In</Text>
           </TouchableOpacity>
 
           <View style={styles.orContainer}>
@@ -58,20 +58,20 @@ const SignUpScreen = () => {
           {/* Social Login Buttons */}
           <TouchableOpacity style={styles.socialButton}>
             <Image source={require('../../assets/images/google.png')} resizeMode="stretch" style={styles.socialIcon} />
-            <Text style={styles.socialText}>Sign up with Google</Text>
+            <Text style={styles.socialText}>Sign In with Google</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.socialButton}>
             <Image source={require('../../assets/images/facebook.png')} resizeMode="stretch" style={styles.socialIcon} />
-            <Text style={styles.socialText}>Sign up with Facebook</Text>
+            <Text style={styles.socialText}>Sign In with Facebook</Text>
           </TouchableOpacity>
 
           <Text style={styles.loginPrompt}>
-            Have an account? 
+            Don&apos;t Have an account? 
           </Text>
           <Link
           href="/signup" style={styles.loginLink}>
-            Log In
+            Sign Up
           </Link>
         </View>
       </ScrollView>
