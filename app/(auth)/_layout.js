@@ -1,16 +1,23 @@
-import { Redirect, Stack } from "expo-router";
+import { useRouter } from "expo-router";  // Import useRouter for redirection
 import { StatusBar } from "expo-status-bar";
-
-// import { Loader } from "../../components";
 import { useGlobalContext } from "../../context/GlobalProvider";
+import GlobalProvider from "../../context/GlobalProvider";
+import { View } from "react-native";
+import { Stack } from "expo-router";  // Ensure this is correctly imported
 
 const AuthLayout = () => {
   const { loading, isLogged } = useGlobalContext();
+  const router = useRouter();  // Initialize useRouter for navigation
 
-  if (!loading && isLogged) return <Redirect href="/explore" />;
+  // If user is logged in and loading is complete, navigate to /explore
+  if (!loading && isLogged) {
+    router.push("/explore");  // Programmatically redirect
+    return null;  // Don't render the screen while redirecting
+  }
 
   return (
-    <>
+    <View style={{ flex: 1 }}>
+      <GlobalProvider>
       <Stack>
         <Stack.Screen
           name="signin"
@@ -25,10 +32,8 @@ const AuthLayout = () => {
           }}
         />
       </Stack>
-
-      {/* <Loader isLoading={loading} /> */}
-      <StatusBar backgroundColor="#161622" style="light" />
-    </>
+      </GlobalProvider>
+    </View>
   );
 };
 
