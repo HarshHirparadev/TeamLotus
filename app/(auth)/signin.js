@@ -12,13 +12,77 @@
 // export default signup
 
 // const styles = StyleSheet.create({});
-import React from "react";
-import { View, ScrollView, Text, Image, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+
+// const styles = StyleSheet.create({});
+import React,{useState} from "react";
+import { View, ScrollView, Text, Image, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
 import {LinearGradient} from 'expo-linear-gradient'; // Import LinearGradient
+import { useGlobalContext } from '../../context/GlobalProvider';
 
 const SignUpScreen = () => {
+    const { email: globalEmail, pass: globalPass } = useGlobalContext();
+  
+  const [loginData, setLoginData] = useState({
+    email: globalEmail,
+    password: globalPass
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (name, value) => {
+    setLoginData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: "" })); // Clear error when input changes
+  };
+
+  const handleLoginSubmit = async () => {
+
+    try {
+      const headersList = {
+        "Accept": "*/*",
+        "User-Agent": "Thunder Client (https://www.thunderclient.com)",
+        "Content-Type": "application/json"
+      };
+
+      const gqlBody = {
+        query: `
+          query Login($email: String!, $password: String!) {
+            login(email: $email, password: $password) {
+              userId
+              token
+              tokenExpiration
+            }
+          }
+        `,
+        variables: {
+          email: loginData.email,
+          password: loginData.password
+        }
+      };
+
+      const bodyContent = JSON.stringify(gqlBody);
+
+      const response = await fetch("http://localhost:3000/graphql", {
+        method: "POST",
+        body: bodyContent,
+        headers: headersList
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        Alert.alert("Success", "Login successful!");
+        console.log("Response Data:", data);
+        // Handle successful login (e.g., store token, navigate)
+      } else {
+        throw new Error(data.errors[0]?.message || "Something went wrong");
+      }
+    } catch (error) {
+      Alert.alert("Error", error.message);
+      console.log("Error:", error);
+    }
+  };
   return (
     <LinearGradient // Use LinearGradient for the background
     colors={['#CA6955', '#CA6955', '#D26187']} // Set your gradient colors here
@@ -40,12 +104,15 @@ const SignUpScreen = () => {
           <Image source={require('../../assets/images/MainLogo.png')} resizeMode="stretch" style={styles.mainLogo} />
 
           <Text style={styles.labelText}>Email or Username</Text>
-          <TextInput style={styles.inputBox} placeholder="Enter your email or username" placeholderTextColor="#757575" />
+          <TextInput style={styles.inputBox} placeholder="Enter your email or username" placeholderTextColor="#757575" value={loginData.email}
+            onChangeText={(text) => handleChange("email", text)}/>
 
           <Text style={styles.labelText}>Password</Text>
-          <TextInput style={styles.inputBox} placeholder="Enter your password" placeholderTextColor="#757575" secureTextEntry />
+          <TextInput style={styles.inputBox} placeholder="Enter your password"
+               placeholderTextColor="#757575" secureTextEntry value={loginData.password}
+            onChangeText={(text) => handleChange("password", text)} />
 
-          <TouchableOpacity style={styles.signUpButton}>
+          <TouchableOpacity style={styles.signUpButton} onPress={handleLoginSubmit}>
             <Text style={styles.signUpText}>Sign In</Text>
           </TouchableOpacity>
 
@@ -79,6 +146,7 @@ const SignUpScreen = () => {
     </LinearGradient>
   );
 };
+
 
 export default SignUpScreen;
 
