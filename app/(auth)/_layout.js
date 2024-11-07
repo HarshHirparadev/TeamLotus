@@ -26,12 +26,12 @@ const AuthLayout = () => {
             headerShown: false,
           }}
         />
-        {/* <Stack.Screen
-          name="b2"
+        <Stack.Screen
+          name="profile"
           options={{
             headerShown: false,
           }}
-        /> */}
+        />
       </Stack>
       </GlobalProvider>
     </View>
