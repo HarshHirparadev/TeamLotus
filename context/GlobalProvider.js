@@ -21,6 +21,7 @@ const GlobalProvider = ({ children }) => {
         user,
         setUser,
         loading,
+        setLoading,
         email,
         setEmail,
         pass,

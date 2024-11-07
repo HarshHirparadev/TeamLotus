@@ -13,7 +13,7 @@ export default function TabLayout() {
 
   const { loading, isLogged } = useGlobalContext();
 
-  if (!loading && !isLogged) return <Redirect href="/signin" />;
+  // if (!loading && !isLogged) return <Redirect href="/signin" />;
 
 
   return ( <Tabs

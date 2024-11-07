@@ -8,7 +8,7 @@ import { Stack } from "expo-router";  // Ensure this is correctly imported
 const AuthLayout = () => {
   const { loading, isLogged } = useGlobalContext();
 
-  // if (!loading && isLogged) return <Redirect href="/explore" />;
+  if (!loading && isLogged) return <Redirect href="/b2" />;
 
   return (
     <View style={{ flex: 1 }}>

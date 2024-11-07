@@ -26,7 +26,7 @@ import { router } from 'expo-router';
 
 
 const Login = () => {
-  const { email: globalEmail, pass: globalPass, setIsLogged } = useGlobalContext();
+  const { email: globalEmail, pass: globalPass, setIsLogged, setLoading } = useGlobalContext();
   const navigation = useNavigation(); // Initialize navigation
   const [loginData, setLoginData] = useState({
     email: globalEmail,
@@ -42,6 +42,9 @@ const Login = () => {
 
   const handleLoginSubmit = async () => {
     try {
+
+      setLoading(true);
+
       const headersList = {
         Accept: '*/*',
         'User-Agent': 'Thunder Client (https://www.thunderclient.com)',
@@ -77,17 +80,22 @@ const Login = () => {
       const data = await response.json();
 
       if (response.ok) {
-
+        setLoading(false)
         setIsLogged(true);
        
-    router.replace("../(tabs)/b2");
         Alert.alert('Success', 'Login successful!');
         console.log('Response Data:', data);
+        return router.replace("/b2");
         // Handle successful login (e.g., store token, navigate)
       } else {
+        setLoading(false)
+        setIsLogged(false);
         throw new Error(data.errors[0]?.message || 'Something went wrong');
+       
       }
     } catch (error) {
+      setLoading(false)
+        setIsLogged(false);
       Alert.alert('Error', error.message);
       console.log('Error:', error);
     }
