@@ -12,75 +12,167 @@
 // export default signup
 
 // const styles = StyleSheet.create({});
-import React from "react";
-import { View, ScrollView, Text, Image, TextInput, TouchableOpacity, StyleSheet } from "react-native";
+
+// const styles = StyleSheet.create({});
+import React,{useState} from "react";
+import { View, ScrollView, Text, Image, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Link } from "expo-router";
 import {LinearGradient} from 'expo-linear-gradient'; // Import LinearGradient
+import { useGlobalContext } from '../../context/GlobalProvider';
+import { useNavigation } from '@react-navigation/native';
 
-const SignUpScreen = () => {
+
+const Login = () => {
+  const { email: globalEmail, pass: globalPass } = useGlobalContext();
+  const navigation = useNavigation(); // Initialize navigation
+  const [loginData, setLoginData] = useState({
+    email: globalEmail,
+    password: globalPass,
+  });
+
+  const [errors, setErrors] = useState({});
+
+  const handleChange = (name, value) => {
+    setLoginData((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: '' })); // Clear error when input changes
+  };
+
+  const handleLoginSubmit = async () => {
+    try {
+      const headersList = {
+        Accept: '*/*',
+        'User-Agent': 'Thunder Client (https://www.thunderclient.com)',
+        'Content-Type': 'application/json',
+      };
+
+      const gqlBody = {
+        query: `
+          query Login($email: String!, $password: String!) {
+            login(email: $email, password: $password) {
+              userId
+              token
+              tokenExpiration
+            }
+          }
+        `,
+        variables: {
+          email: loginData.email,
+          password: loginData.password,
+        },
+      };
+
+      const bodyContent = JSON.stringify(gqlBody);
+
+      const response = await fetch('http://192.168.2.36:3000/graphql', {
+        method: 'POST',
+        body: bodyContent,
+        headers: headersList,
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        navigation.navigate('profile');
+        Alert.alert('Success', 'Login successful!');
+        console.log('Response Data:', data);
+        // Handle successful login (e.g., store token, navigate)
+      } else {
+        throw new Error(data.errors[0]?.message || 'Something went wrong');
+      }
+    } catch (error) {
+      Alert.alert('Error', error.message);
+      console.log('Error:', error);
+    }
+  };
   return (
     <LinearGradient // Use LinearGradient for the background
-    colors={['#CA6955', '#CA6955', '#D26187']} // Set your gradient colors here
-    style={styles.container}
-  >
-    <SafeAreaView style={styles.container}>
-      <ScrollView contentContainerStyle={styles.scrollView}>
-        {/* Top Row with Status Bar Icons */}
-        {/* <View style={styles.row}>
+      colors={['#CA6955', '#CA6955', '#D26187']} // Set your gradient colors here
+      style={styles.container}
+    >
+      <SafeAreaView style={styles.container}>
+        <ScrollView contentContainerStyle={styles.scrollView}>
+          {/* Top Row with Status Bar Icons */}
+          {/* <View style={styles.row}>
           <Text style={styles.statusText}>9:41</Text>
           <Image source={require("../../assets/images/facebook.png")} resizeMode="stretch" style={styles.icon} />
           <Image source={require("../../assets/images/facebook.png")} resizeMode="stretch" style={styles.icon} />
           <Image source={require("../../assets/images/facebook.png")} resizeMode="stretch" style={styles.iconLarge} />
         </View> */}
 
-        {/* Main Sign-Up Content */}
-        <View style={styles.signUpContainer}>
-          {/* <Image source={require("../../assets/images/facebook.png")} resizeMode="stretch" style={styles.profileIcon} /> */}
-          <Image source={require('../../assets/images/MainLogo.png')} resizeMode="stretch" style={styles.mainLogo} />
+          {/* Main Sign-Up Content */}
+          <View style={styles.signUpContainer}>
+            {/* <Image source={require("../../assets/images/facebook.png")} resizeMode="stretch" style={styles.profileIcon} /> */}
+            <Image
+              source={require('../../assets/images/MainLogo.png')}
+              resizeMode="stretch"
+              style={styles.mainLogo}
+            />
 
-          <Text style={styles.labelText}>Email or Username</Text>
-          <TextInput style={styles.inputBox} placeholder="Enter your email or username" placeholderTextColor="#757575" />
+            <Text style={styles.labelText}>Email or Username</Text>
+            <TextInput
+              style={styles.inputBox}
+              placeholder="Enter your email or username"
+              placeholderTextColor="#757575"
+              value={loginData.email}
+              onChangeText={(text) => handleChange('email', text)}
+            />
 
-          <Text style={styles.labelText}>Password</Text>
-          <TextInput style={styles.inputBox} placeholder="Enter your password" placeholderTextColor="#757575" secureTextEntry />
+            <Text style={styles.labelText}>Password</Text>
+            <TextInput
+              style={styles.inputBox}
+              placeholder="Enter your password"
+              placeholderTextColor="#757575"
+              secureTextEntry
+              value={loginData.password}
+              onChangeText={(text) => handleChange('password', text)}
+            />
 
-          <TouchableOpacity style={styles.signUpButton}>
-            <Text style={styles.signUpText}>Sign In</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.signUpButton}
+              onPress={handleLoginSubmit}
+            >
+              <Text style={styles.signUpText}>Sign In</Text>
+            </TouchableOpacity>
 
-          <View style={styles.orContainer}>
-            <View style={styles.divider} />
-            <Text style={styles.orText}>OR</Text>
-            <View style={styles.divider} />
+            <View style={styles.orContainer}>
+              <View style={styles.divider} />
+              <Text style={styles.orText}>OR</Text>
+              <View style={styles.divider} />
+            </View>
+
+            {/* Social Login Buttons */}
+            <TouchableOpacity style={styles.socialButton}>
+              <Image
+                source={require('../../assets/images/google.png')}
+                resizeMode="stretch"
+                style={styles.socialIcon}
+              />
+              <Text style={styles.socialText}>Sign In with Google</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={styles.socialButton}>
+              <Image
+                source={require('../../assets/images/facebook.png')}
+                resizeMode="stretch"
+                style={styles.socialIcon}
+              />
+              <Text style={styles.socialText}>Sign In with Facebook</Text>
+            </TouchableOpacity>
+
+            <Text style={styles.loginPrompt}>Don&apos;t Have an account?</Text>
+            <Link href="/signup" style={styles.loginLink}>
+              Sign Up
+            </Link>
           </View>
-
-          {/* Social Login Buttons */}
-          <TouchableOpacity style={styles.socialButton}>
-            <Image source={require('../../assets/images/google.png')} resizeMode="stretch" style={styles.socialIcon} />
-            <Text style={styles.socialText}>Sign In with Google</Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style={styles.socialButton}>
-            <Image source={require('../../assets/images/facebook.png')} resizeMode="stretch" style={styles.socialIcon} />
-            <Text style={styles.socialText}>Sign In with Facebook</Text>
-          </TouchableOpacity>
-
-          <Text style={styles.loginPrompt}>
-            Don&apos;t Have an account? 
-          </Text>
-          <Link
-          href="/signup" style={styles.loginLink}>
-            Sign Up
-          </Link>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaView>
     </LinearGradient>
   );
 };
 
-export default SignUpScreen;
+
+export default Login;
 
 // const styles = StyleSheet.create({
 //   container: {

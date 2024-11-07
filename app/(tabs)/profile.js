@@ -12,7 +12,7 @@ import { LinearGradient } from 'expo-linear-gradient'; // Install LinearGradient
 import { Header } from './header';
 import { Footer } from './footer';
 
-const b2 = () => {
+const Profile = () => {
   const [activeTab, setActiveTab] = useState('inProgress');
 
   const courses = [
@@ -102,7 +102,7 @@ const b2 = () => {
   );
 };
 
-export default b2;
+export default Profile;
 
 const styles = StyleSheet.create({
   container: {
