@@ -63,7 +63,7 @@ const SignUpScreen = () => {
 
       const bodyContent = JSON.stringify(gqlBody);
 
-      const response = await fetch("http://localhost:3000/graphql", {
+      const response = await fetch("http://192.168.2.36:3000/graphql", {
         method: "POST",
         body: bodyContent,
         headers: headersList
