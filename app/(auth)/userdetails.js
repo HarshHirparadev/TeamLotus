@@ -287,6 +287,7 @@ import {
   TextInput,
   StyleSheet,
   Alert,
+  TouchableOpacity,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -490,9 +491,12 @@ const UserDetails = () => {
           colors={['#EB7B38', '#E26662', '#E15890']}
           style={styles.createAccountButton}
         >
-          <Text style={styles.buttonText} onPress={handleSubmit}>
-            Create account
-          </Text>
+          <TouchableOpacity
+            style={styles.buttonContainer}
+            onPress={handleSubmit}
+          >
+            <Text style={styles.buttonText}>Create Account</Text>
+          </TouchableOpacity>
         </LinearGradient>
       </ScrollView>
     </SafeAreaView>
