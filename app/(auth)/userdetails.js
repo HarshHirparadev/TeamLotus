@@ -686,7 +686,7 @@ const UserDetails = () => {
 
       const bodyContent = JSON.stringify(gqlBody);
 
-      const API_URL = 'https://a280-142-126-97-217.ngrok-free.app/graphql';
+      const API_URL = 'https://7ae1-142-126-97-217.ngrok-free.app/graphql';
 
       const response = await fetch(`${API_URL}`, {
         method: 'POST',
