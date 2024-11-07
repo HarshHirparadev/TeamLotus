@@ -22,7 +22,7 @@ export default function TabLayout() {
           headerShown: false,
         }}
       >
-        <Tabs.Screen
+        {/* <Tabs.Screen
           name="index"  // Should correspond to the "index" screen file within the same directory
           options={{
             title: 'Home',
@@ -39,7 +39,7 @@ export default function TabLayout() {
               <TabBarIcon name={focused ? 'code-slash' : 'code-slash-outline'} color={color} />
             ),
           }}
-        />
+        /> */}
         <Tabs.Screen
           name="signup"  // Should correspond to the "signup" screen file
           options={{
@@ -77,7 +77,18 @@ export default function TabLayout() {
             ),
           }}
         />
+        <Tabs.Screen
+          name="b2"  // Should correspond to the "userdetails" screen file
+          options={{
+            title: 'Courses',
+            tabBarIcon: ({ color, focused }) => (
+              <TabBarIcon name={focused ? 'person' : 'person-outline'} color={color} />
+            ),
+          }}
+        />
+     
       </Tabs>
+      
      
        ) 
       
