@@ -27,7 +27,7 @@ const AuthLayout = () => {
           }}
         />
         <Stack.Screen
-          name="profile"
+          name="b2"
           options={{
             headerShown: false,
           }}

@@ -21,10 +21,12 @@ import { Link } from "expo-router";
 import {LinearGradient} from 'expo-linear-gradient'; // Import LinearGradient
 import { useGlobalContext } from '../../context/GlobalProvider';
 import { useNavigation } from '@react-navigation/native';
+import Config from 'react-native-config';
+import { router } from 'expo-router';
 
 
 const Login = () => {
-  const { email: globalEmail, pass: globalPass } = useGlobalContext();
+  const { email: globalEmail, pass: globalPass, setIsLogged } = useGlobalContext();
   const navigation = useNavigation(); // Initialize navigation
   const [loginData, setLoginData] = useState({
     email: globalEmail,
@@ -63,17 +65,22 @@ const Login = () => {
       };
 
       const bodyContent = JSON.stringify(gqlBody);
+      // const apiUrl = process.env.REACT_APP_API_BASE_URL;
+      const API_URL = 'https://a280-142-126-97-217.ngrok-free.app/graphql';
 
-      const response = await fetch('http://192.168.2.36:3000/graphql', {
+
+      const response = await fetch(`${API_URL}`, {
         method: 'POST',
         body: bodyContent,
         headers: headersList,
       });
-
       const data = await response.json();
 
       if (response.ok) {
-        navigation.navigate('profile');
+
+        setIsLogged(true);
+       
+    router.replace("../(tabs)/b2");
         Alert.alert('Success', 'Login successful!');
         console.log('Response Data:', data);
         // Handle successful login (e.g., store token, navigate)
